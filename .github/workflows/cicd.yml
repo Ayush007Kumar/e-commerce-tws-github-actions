@@ -1,7 +1,7 @@
 #Goal: To run the continuous integration for this project
 name: CI
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
 #Code Lint and Test
