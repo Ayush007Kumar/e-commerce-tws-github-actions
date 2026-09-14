@@ -21,11 +21,11 @@ jobs:
    dependency-scan:
        needs: sast-scan
        uses: ./.github/workflows/dependecy_scan.yml
-  #Code Build and Push
-  #build-and-push:
-       #secrets: inherit
-       #needs: code-lint-and-test
-       #uses: ./.github/workflows/docker.yml
+  #Code Build
+   build-and-scan:
+        secrets: inherit
+        needs: code-lint-and-test
+        uses: ./.github/workflows/trivy_scans.yml
   #Code Deploy
   #deploy:
        #secrets: inherit        
