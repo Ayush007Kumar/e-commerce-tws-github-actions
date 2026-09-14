@@ -20,8 +20,7 @@ jobs:
 #Dependency Scanning
    dependency-scan:
        needs: sast-scan
-       uses: ./.github/workflows/dependency_scan.yml
-       secrets: inherit
+       uses: ./.github/workflows/dependecy_scan.yml
   #Code Build and Push
   #build-and-push:
        #secrets: inherit
