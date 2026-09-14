@@ -1,0 +1,20 @@
+#Goal:To scan the dependencies/libraries used in the project for any known vulnerabilities and security issues
+name: Dependency Scan
+on:
+  workflow_call: # allows this workflow to be called from another workflow
+jobs:
+  dependency-scan:
+    strategy:
+      matrix:
+        python-version: [3.12, 3.13, 3.14]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name:  Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Dependency Scan for pip
+        uses: pypa/gh-action-pip-audit@v1.1.0
+        
