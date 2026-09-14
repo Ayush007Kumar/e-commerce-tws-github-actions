@@ -1,7 +1,12 @@
 #Goal: To scan the statc code for SAST and code related issues using sonarqube scanner
 name: Sonar Scan
+
 on:
-  workflow_call: # allows this workflow to be called from another workflow  
+  workflow_call: # allows this workflow to be called from another workflow
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   sast-scan:
     runs-on: ubuntu-latest
@@ -22,7 +27,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${matrix.language}"
-          
+
       - name: SonarQube Server Scan
         uses: sonarsource/sonarqube-scan-action@v8.2.1
         with:
