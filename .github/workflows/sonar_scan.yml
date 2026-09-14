@@ -10,6 +10,19 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0 # from very first commit pull to the all code (Fetch all history for all branches and tags)
+      - name: CodeQL Scan
+        uses: github/codeql-action/init@v3
+        with:
+          languages: python
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${matrix.language}"
+          
       - name: SonarQube Server Scan
         uses: sonarsource/sonarqube-scan-action@v8.2.1
         with:
