@@ -3,13 +3,13 @@ name: DevSecOps
 on:
   push:
 
-  jobs:
+jobs:
   #Secret Scanning
-  secret-scanning:
+   secret-scanning:
        uses: ./.github/workflows/secrets-scanning.yml 
        secrets: inherit
 #Code Lint and Test
-  code-lint-and-test:
+   code-lint-and-test:
        needs: secret-scanning
        uses: ./.github/workflows/lint_and_test.yml
   #Code Build and Push
