@@ -10,6 +10,12 @@ jobs:
         uses: actions/checkout@v7
       - name: SonarQube Server Scan
         uses: sonarsource/sonarqube-scan-action@v8.2.1
+        with:
+          args: >
+            -Dsonar.projectKey=e-commerce-tws-github-actions
+            -Dsonar.organization=ayush007kumar
+            -Dsonar.projectName=e-commerce-tws-github-actions
+            -Dsonar.branch.name=main
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #sonar.io url
