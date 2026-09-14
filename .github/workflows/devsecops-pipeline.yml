@@ -21,10 +21,10 @@ jobs:
    dependency-scan:
        needs: sast-scan
        uses: ./.github/workflows/dependecy_scan.yml
-  #Code Build
+  #Code Build and Scan
    build-and-scan:
         secrets: inherit
-        needs: code-lint-and-test
+        needs: dependency-scan
         uses: ./.github/workflows/trivy_scans.yml
   #Code Deploy
   #deploy:
